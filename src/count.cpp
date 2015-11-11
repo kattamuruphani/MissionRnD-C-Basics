@@ -12,5 +12,9 @@ ERROR CASES: Return -1 in error cases.
 NOTES:
 */
 int count(int num1, int num2) {
-	return 0;
+	int i = num1,j=1,count;
+	for (i; i <= num2; i *= j,j++){
+		count++;
+	}
+	return count;
 }
