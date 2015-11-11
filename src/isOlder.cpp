@@ -15,8 +15,8 @@ NOTES: 		Don't use any built-in C functions for comparisions. You are free to wr
 #include<conio.h>
 #include<stdio.h>
 #include<string.h>
-#pragma warning(disable:4996)
-int leap_year(int, int, int, int);
+int leap(int, int, int, int);
+
 int isOlder(char *dob1, char *dob2) {
 
 	int i, j;
@@ -66,9 +66,9 @@ int isOlder(char *dob1, char *dob2) {
 
 
 		if (yy[j] % 400 == 0 || (yy[j] % 4 == 0 && yy[j] % 100 != 0))
-			decision = leap_year(dd[j], mm[j], yy[j], 29);
+			decision = leap(dd[j], mm[j], yy[j], 29);
 		else
-			decision = leap_year(dd[j], mm[j], yy[j], 28);
+			decision = leap(dd[j], mm[j], yy[j], 28);
 		if (decision == -1)
 			return -1;
 	}
@@ -89,7 +89,8 @@ int isOlder(char *dob1, char *dob2) {
 			else if (dd[1] < dd[0])
 				return 2;
 			else
-				printf("%d", 0);
+				return 0;
+
 		}
 	}
 
@@ -99,7 +100,7 @@ int isOlder(char *dob1, char *dob2) {
 
 }
 
-int leap_year(int dd, int mm, int yy, int leap){
+int leap(int dd, int mm, int yy, int leap){
 	int monthdays[] = { 31, leap, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	if (dd <= monthdays[mm - 1] && dd >= 1){
 		return 1;
@@ -107,3 +108,4 @@ int leap_year(int dd, int mm, int yy, int leap){
 	else
 		return -1;
 }
+
